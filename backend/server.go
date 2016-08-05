@@ -157,7 +157,7 @@ func (s *server) list(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	w.Write(toks)
+	_, _ = w.Write(toks)
 }
 
 func (s *server) single(w http.ResponseWriter, req *http.Request) {
@@ -172,7 +172,7 @@ func (s *server) single(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	w.Write(tok)
+	_, _ = w.Write(tok)
 }
 
 func (s *server) create(w http.ResponseWriter, req *http.Request) {
@@ -193,7 +193,7 @@ func (s *server) create(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	w.Write(buf)
+	_, _ = w.Write(buf)
 }
 
 func (s *server) file(w http.ResponseWriter, path, name string, contentType string) {
@@ -204,7 +204,7 @@ func (s *server) file(w http.ResponseWriter, path, name string, contentType stri
 	}
 
 	w.Header().Set("Content-Type", contentType)
-	w.Write(file)
+	_, _ = w.Write(file)
 }
 
 func (s *server) upload(w http.ResponseWriter, req *http.Request) {
