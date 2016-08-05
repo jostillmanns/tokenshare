@@ -46,7 +46,9 @@ func newServer(db, bucket, storage, static, user, pass string, tokenSize int, fi
 		},
 	}
 
-	s.init()
+	if err := s.init(); err != nil {
+		return nil, err
+	}
 
 	mux.HandleFunc("/index.html", s.index)
 	mux.HandleFunc("/app.js", s.client)
