@@ -250,7 +250,7 @@ func (s *server) transfer(w http.ResponseWriter, req *http.Request) {
 	token.Name = handler.Filename
 
 	if err := s.update(bid, token); err != nil {
-		http.Error(w, fmt.Sprintf("unable to update token satus: %v"), http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("unable to update token satus: %v", err), http.StatusInternalServerError)
 		return
 	}
 }
@@ -260,7 +260,7 @@ func (s *server) download(w http.ResponseWriter, req *http.Request) {
 
 	bid, err := hex.DecodeString(id)
 	if err != nil {
-		http.Error(w, fmt.Sprintf("hex decode: %v"), http.StatusBadRequest)
+		http.Error(w, fmt.Sprintf("hex decode: %v", err), http.StatusBadRequest)
 		return
 	}
 
