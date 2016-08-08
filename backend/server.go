@@ -51,11 +51,11 @@ func newSrv(db, bucket, storage, static, user, pass string, tokenSize int, maxMe
 	}
 
 	mux.HandleFunc("/index.html", s.index)
+	mux.HandleFunc("/index", s.index)
 	mux.HandleFunc("/app.js", s.client)
 	mux.HandleFunc("/app.js.map", s.client)
 	mux.HandleFunc("/upload.js", s.client)
 	mux.HandleFunc("/upload.js.map", s.client)
-	mux.HandleFunc("/index", s.index)
 	mux.HandleFunc(tokenshare.ReqList, s.list)
 	mux.HandleFunc(tokenshare.ReqDownload, s.download)
 	mux.HandleFunc(tokenshare.ReqCreate, s.create)
