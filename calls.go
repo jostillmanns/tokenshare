@@ -118,7 +118,6 @@ func Transfer(call, name, id string, data []byte, progress chan int) error {
 	}
 
 	pr := &progressReader{body, progress}
-
 	request, err := http.NewRequest("POST", call, pr)
 	if err != nil {
 		return err
@@ -149,7 +148,7 @@ type progressReader struct {
 
 func (pr *progressReader) Read(p []byte) (int, error) {
 	n, err := pr.r.Read(p)
-	if pr.sent != nil {
+	if pr.sent != nil && n != 0 {
 		pr.sent <- n
 	}
 

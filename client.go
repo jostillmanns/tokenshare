@@ -169,14 +169,7 @@ func (c Client) Upload(p []byte, name, id string, progress *dom.HTMLDivElement) 
 
 func (c Client) progress(total int, div *dom.HTMLDivElement) func(int) {
 	return func(p int) {
-		if p == 0 {
-			div.SetInnerHTML("Progress: 100%")
-			return
-		}
-
-		fmt.Println(p)
-
-		div.SetInnerHTML(fmt.Sprintf("Progress: %d%", int(float64(p)/float64(total)*100)))
+		div.SetInnerHTML(fmt.Sprintf("Progress: %d%%", int(float64(p)/float64(total)*100)))
 	}
 }
 
@@ -190,5 +183,10 @@ func (c Client) upload(data []byte, name, id string, progress func(int)) error {
 		}
 	}()
 
-	return Transfer(ReqTransfer, name, id, data, pr)
+	if err := Transfer(ReqTransfer, name, id, data, pr); err != nil {
+		return err
+	}
+
+	progress(len(data))
+	return nil
 }
