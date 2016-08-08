@@ -222,7 +222,7 @@ func (s *server) transfer(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	id := req.MultipartForm.Value[tokenshare.ID][0]
+	id := req.FormValue(tokenshare.ID)
 	bid, err := hex.DecodeString(id)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("hex decode: %v", err), http.StatusBadRequest)
