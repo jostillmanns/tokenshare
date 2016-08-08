@@ -1,19 +1,17 @@
 package main
 
 import (
+	"encoding/hex"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"path/filepath"
 	"time"
-	"tokenshare"
-
-	"os"
-
-	"encoding/hex"
 
 	"github.com/boltdb/bolt"
+	"github.com/jostillmanns/tokenshare"
 )
 
 const (

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
-	"tokenshare"
 
 	"github.com/boltdb/bolt"
+	"github.com/jostillmanns/tokenshare"
 )
 
 type database struct {

@@ -14,7 +14,8 @@ import (
 	"path/filepath"
 	"sync"
 	"testing"
-	"tokenshare"
+
+	"github.com/jostillmanns/tokenshare"
 )
 
 func TestCreate(t *testing.T) {

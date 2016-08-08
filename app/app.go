@@ -2,7 +2,8 @@ package main
 
 import (
 	"log"
-	"tokenshare"
+
+	"github.com/jostillmanns/tokenshare"
 
 	"honnef.co/go/js/dom"
 )

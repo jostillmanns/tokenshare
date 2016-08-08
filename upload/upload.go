@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
-	"tokenshare"
 
+	"github.com/jostillmanns/tokenshare"
 	"honnef.co/go/js/dom"
 )
 
