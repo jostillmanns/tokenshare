@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	server, err := newServer("bolt.db", "token", "storage", "www", "user", "pass", 16, int64(20*1024*1024))
+	server, err := newSrv("bolt.db", "token", "storage", "www", "user", "pass", 16, int64(1024*1024*1024))
 	if err != nil {
 		log.Fatalf("server: %v", err)
 	}

@@ -22,7 +22,7 @@ const (
 	js     = "app.js"
 )
 
-func newServer(db, bucket, storage, static, user, pass string, tokenSize int, fileSize int64) (*server, error) {
+func newSrv(db, bucket, storage, static, user, pass string, tokenSize int, maxMemory int64) (*server, error) {
 	bolt, err := bolt.Open(db, 0600, nil)
 	if err != nil {
 		return nil, err
