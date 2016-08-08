@@ -33,8 +33,8 @@ func newSrv(db, bucket, storage, static, user, pass string, tokenSize int, maxMe
 		user: user,
 		pass: pass,
 
-		mux:         mux,
-		maxFileSize: fileSize,
+		mux:       mux,
+		maxMemory: maxMemory,
 
 		storage: storage,
 		static:  static,
@@ -70,7 +70,7 @@ type server struct {
 	user, pass string
 	mux        *http.ServeMux
 
-	maxFileSize int64
+	maxMemory int64
 
 	storage string
 	static  string
@@ -213,7 +213,7 @@ func (s *server) upload(w http.ResponseWriter, req *http.Request) {
 	s.file(w, s.static, upload, "text/html; charset-utf-8")
 }
 func (s *server) transfer(w http.ResponseWriter, req *http.Request) {
-	if err := req.ParseMultipartForm(s.maxFileSize); err != nil {
+	if err := req.ParseMultipartForm(s.maxMemory); err != nil {
 		http.Error(w, fmt.Sprintf("parse multipart form: %v", err), http.StatusBadGateway)
 	}
 
